@@ -22,18 +22,14 @@ $(document).ready(function () {
   // }
   // mobileDetect();
 
-  function splitTitle() {
-    const titles = "Van Tuan N.";
-    const wrapTittle = document.querySelector(".banner__intro-title");
-    const transferTitles = titles.split("");
-
-    transferTitles.forEach((ar) => {
-      const span = document.createElement("span");
-      span.innerHTML = ar;
-      wrapTittle.appendChild(span);
+  function menuHover() {
+    const navItems = $("header .wrap .wrap__nav-menu li");
+    navItems.on("click", function () {
+      $(this).siblings().removeClass("active");
+      $(this).addClass("active");
     });
   }
-  splitTitle();
+  menuHover();
 
   function menu() {
     const openHamburger = $("header .wrap__header-hamburger");
@@ -49,53 +45,27 @@ $(document).ready(function () {
   }
   menu();
 
-  function customCursor() {
-    const cursor = $(".cursor");
-    const hoverCursor = $(".hover-cursor");
+  // function customCursor() {
+  //   const cursor = $(".cursor");
+  //   const hoverCursor = $(".hover-cursor");
 
-    $(document).on("mousemove", function (e) {
-      cursor.css("top", e.pageY + "px");
-      cursor.css("left", e.pageX + "px");
-    });
-    hoverCursor.on("mousemove", function () {
-      cursor.addClass("active");
-    });
-    hoverCursor.on("mouseleave", function () {
-      cursor.removeClass("active");
-    });
-  }
-  customCursor();
-
-  function hoverBranch() {
-    let hoverFixed = $(".hover-fixed");
-    hoverFixed.mouseleave(function (e) {
-      TweenMax.to($(this), 0.3, { x: 0, y: 0 });
-    });
-    hoverFixed.mousemove(function (e) {
-      followParallaxMouse(e, $(this));
-    });
-
-    function followParallaxMouse(e, target) {
-      parallaxMouse(e, target, 80);
-    }
-
-    function parallaxMouse(e, target, movement) {
-      let $this = target;
-      let relX = e.pageX - $this.offset().left;
-      let relY = e.pageY - $this.offset().top;
-      TweenMax.to(target, 0.3, {
-        x: ((relX - $this.width() / 2) / $this.width()) * movement,
-        y: ((relY - $this.height() / 2) / $this.height()) * movement,
-      });
-    }
-  }
-  hoverBranch();
+  //   $(document).on("mousemove", function (e) {
+  //     cursor.css("top", e.pageY + "px");
+  //     cursor.css("left", e.pageX + "px");
+  //   });
+  //   hoverCursor.on("mousemove", function () {
+  //     cursor.addClass("active");
+  //   });
+  //   hoverCursor.on("mouseleave", function () {
+  //     cursor.removeClass("active");
+  //   });
+  // }
+  // customCursor();
 
   function workerSlide() {
-    let progressBar = $(".worker .splide .my-slider-progress-bar").get(0);
+    // let progressBar = $(".worker .splide .my-slider-progress-bar").get(0);
 
-    console.log(progressBar);
-    const slide = new Splide(".worker .splide", {
+    const slide = new Splide(".home .banner .splide", {
       type: "fade",
       rewind: true,
       pagination: false,
@@ -104,31 +74,31 @@ $(document).ready(function () {
     slide.on("mounted move", function () {
       const end = slide.Components.Controller.getEnd() + 1;
       const rate = Math.min((slide.index + 1) / end, 1);
-      progressBar.style.width = String(100 * rate) + "%";
+      // progressBar.style.width = String(100 * rate) + "%";
     });
 
     slide.mount();
   }
   workerSlide();
 
-  function smoothScroll() {
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector("[data-scroll-container]"),
-      smooth: true,
-      initPosition: { x: 0, y: 0 },
-      mobile: {
-        smooth: true,
-        inertia: 0.8,
-        getDirection: true,
-      },
-      tablet: {
-        smooth: true,
-        inertia: 0.8,
-        getDirection: true,
-      },
-    });
-  }
-  smoothScroll();
+  // function smoothScroll() {
+  //   const scroll = new LocomotiveScroll({
+  //     el: document.querySelector("[data-scroll-container]"),
+  //     smooth: true,
+  //     initPosition: { x: 0, y: 0 },
+  //     mobile: {
+  //       smooth: true,
+  //       inertia: 0.8,
+  //       getDirection: true,
+  //     },
+  //     tablet: {
+  //       smooth: true,
+  //       inertia: 0.8,
+  //       getDirection: true,
+  //     },
+  //   });
+  // }
+  // smoothScroll();
 
   // ANIMATION LI PARENT MENU
   // let tlMenu = gsap.timeline();

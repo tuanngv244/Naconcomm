@@ -1,0 +1,33 @@
+.home {
+  .banner {
+    margin-top: 2rem;
+    &__slide {
+      &-item {
+        position: relative;
+        .background {
+          border-radius: 0.6rem;
+          overflow: hidden;
+          height: 60rem;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .inner {
+          position: absolute;
+          bottom: 4rem;
+          left: 4rem;
+          .title {
+            @include text(6rem, $fManrope-b, 6.2rem, $white100-cl, none);
+            max-width: 50rem;
+          }
+          .description {
+            margin-top: 1.2rem;
+            @include text(2rem, $fManrope-m, auto, $white100-cl, none);
+          }
+        }
+      }
+    }
+  }
+}
